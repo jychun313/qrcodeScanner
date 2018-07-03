@@ -1,7 +1,9 @@
 //
 //  ImportWalletViewController.swift
+//  LiveenWallet
 //
 //  Created by Jae Yoon Chun on 29/06/2018.
+//  Copyright © 2018 veenfoundation. All rights reserved.
 //
 
 import AVFoundation
@@ -104,5 +106,21 @@ class ImportWalletViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    @IBAction func Import(_ sender: UIButton) {
+        print("click Button")
+        
+        let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let myWalletViewController = mainStoryBoard.instantiateViewController(withIdentifier: "myWalletViewController") as! MyWalletViewController
+        self.navigationController?.pushViewController(myWalletViewController, animated: true)
+    }
+    
+    @IBAction func Save(_ sender: UIButton) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = textLabel.text
+        
+        if pasteboard.string != nil {
+        }
     }
 }
